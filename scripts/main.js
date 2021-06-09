@@ -46,9 +46,6 @@ slider.addEventListener('mouseup', async e => {
           pixel[j].style.backgroundColor = "white";
           //pixel[j].style.backgroundColor = "#"+((1<<24)*Math.random()|0).toString(16);     
           col[i].appendChild(pixel[j]);
-          pixel[j].addEventListener('mouseover', function(e) {
-          	item.style.backgroundColor = "#"+((1<<24)*Math.random()|0).toString(16);
-          }, false);
 
         }
 
@@ -58,10 +55,12 @@ slider.addEventListener('mouseup', async e => {
 let pixels = document.getElementsByClassName("pixel");
 for (let i = 0; i < pixels.length; ++i) {
     let item = pixels[i];  
-
+    item.addEventListener('mouseover', function(e)
+        {
+           item.style.backgroundColor = "#"+((1<<24)*Math.random()|0).toString(16);
+    }, false);
 }
 
 
 });
-
 
