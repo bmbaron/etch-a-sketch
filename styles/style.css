@@ -9,22 +9,21 @@ body {
   padding-top:2%;
   display: flex;
   justify-content: center;
-  background-color: white;
+  background-color: none !important;
 }
 
 #container {  
+  background: none !important;
   border: 5px black solid;
   margin-top:70px;
   display: grid;
-  width: 500px !important;
-  height: 500px !important;
+  width: 80%;
+  height: 0;
+  padding-bottom: 80%;
   
-  grid-temlate-rows: var;
+  grid-template-rows: var;
   grid-template-columns: var;
   grid-auto-flow: column;
-  
-    min-height:0;
-  min-width:0;
 }
 
 
@@ -45,7 +44,9 @@ body {
 
 .slidecontainer {
   
-  position: fixed;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
   width: 200px; /* Width of the outside container */
 }
 

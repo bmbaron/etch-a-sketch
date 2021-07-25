@@ -10,14 +10,14 @@ output.innerHTML = slider.value; // Display the default slider value
 
 // Update the current slider value (each time you drag the slider handle)
 
-slider.addEventListener('mouseup', async e => {
+slider.addEventListener('touchend', buildGrid); 
+slider.addEventListener('mouseup', buildGrid); 
 
-//slider.oninput = async function() {
+async function buildGrid () {
+
   output.innerHTML = slider.value;
   gridSize = slider.value;
   slider.classList.add("disabled");
-
-  console.log(gridSize);
   
       while (container.hasChildNodes()) {
       container.removeChild(container.lastChild);
@@ -30,8 +30,6 @@ slider.addEventListener('mouseup', async e => {
       
       let width = container.clientWidth;
       let height = container.clientHeight;
-      console.log(width, height, gridSize);
-
 
       for (let i=0; i<gridSize; i++) {
 
@@ -62,5 +60,25 @@ for (let i = 0; i < pixels.length; ++i) {
 }
 
 
+};
+
+container.addEventListener("touchmove", function(e) {
+  container.backgroundColor = "red";
+  // get the touch element
+  var touch = e.touches[0];
+
+  // get the DOM element
+  var pixel = document.elementFromPoint(touch.clientX, touch.clientY);
+
+  // make sure an element was found - some areas on the page may have no elements
+  if (pixel) {
+      let width = pixel.offsetWidth;
+      let height = pixel.offsetHeight;
+      console.log("width: " + width);
+      if (width <= 500 && width==height) {
+        // interact with the DOM element
+        pixel.style.backgroundColor =  "#"+((1<<24)*Math.random()|0).toString(16);
+      }
+    }
 });
 
